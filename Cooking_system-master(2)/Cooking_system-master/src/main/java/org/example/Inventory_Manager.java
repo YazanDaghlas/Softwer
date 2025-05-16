@@ -1,0 +1,108 @@
+package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Inventory_Manager
+{
+    private NotificationService notification_Service;
+
+    private OrderService order_Service;
+
+    private List<Ingredient> ingredients;
+
+
+
+    public Inventory_Manager(NotificationService notification_Service, OrderService order_Service)
+    {
+        this.notification_Service = notification_Service;
+
+        this.order_Service = order_Service;
+
+        this.ingredients = new ArrayList<>();  
+    }
+
+
+
+
+
+    public void updateStock(int new_Quantity, String ingredientName)
+    {
+        for (Ingredient ingredient : ingredients)
+        {
+            if (ingredient.getName().equals(ingredientName))
+            {
+
+                           ingredient.setQuantity(new_Quantity);
+
+                checkLevelOfIngredient(ingredient);
+
+                break;
+            }
+        }
+    }
+
+
+
+    public boolean areMultipleIngredientsLowStock()
+    {
+        List<String> lowStockIngredients = new ArrayList<>();
+
+        for (Ingredient ingredient : ingredients)
+
+        {
+            if (ingredient.getQuantity() < ingredient.getMinQuantity())
+            {
+                lowStockIngredients.add(ingredient.getName());
+            }
+        }
+
+        if (!lowStockIngredients.isEmpty())
+        {
+            String message = "Low stock alert: " + String.join(", ", lowStockIngredients);
+
+            notification_Service.sendNotificationToManager(message);
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public void addIngredient(Ingredient ingredient)
+    {
+        ingredients.add(ingredient);
+
+        System.out.println("Ingredient " + ingredient.getName() + " added to inventory.");
+    }
+
+
+
+
+
+    
+    public boolean islowstock()
+    {
+        for (Ingredient ingredient : ingredients)
+        {
+            if (ingredient.getQuantity() < ingredient.getMinQuantity())
+
+            {
+                return true;
+            }
+        }
+        return false;  
+    }
+
+
+    private void checkLevelOfIngredient(Ingredient ingredient)
+    {
+        if (ingredient.getQuantity() < ingredient.getMinQuantity())
+        {
+            notification_Service.sendNotificationToManager("Low stock alert: " + ingredient.getName() + " is below the threshold -->>> Remaining: " + ingredient.getQuantity());
+        }
+    }
+
+
+
+}
