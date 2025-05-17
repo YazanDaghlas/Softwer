@@ -1,3 +1,2 @@
 # Softwer
-yazan
-riiepe
+
