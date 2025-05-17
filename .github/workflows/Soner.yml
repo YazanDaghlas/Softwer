@@ -36,7 +36,9 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Build and analyze
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=yazanSoftwer_Softwer
-        working-directory: Cooking_system-master(2)/Cooking_system-master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=yazanSoftwer_Softwer
+        working-directory: Cooking_system-master(2)/Cooking_system-master
+      
