@@ -1,6 +1,2 @@
 # Softwer
-fenen
-
-enrkenr
-fdfd
-nfgngf
+yazan
