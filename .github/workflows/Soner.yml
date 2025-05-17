@@ -39,9 +39,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        run:mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-              -Dsonar.projectKey=Softwer \
-              -Dsonar.organization=yazanSoftwer \
-              -Dsonar.host.url=https://sonarcloud.io
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=yazanSoftwer_Softwer
         working-directory: Cooking_system-master(2)/Cooking_system-master
       
