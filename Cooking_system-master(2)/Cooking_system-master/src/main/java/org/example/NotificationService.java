@@ -12,7 +12,7 @@ public class NotificationService
 
 
 
-    private List<String> notificationToManager = new ArrayList<>();
+    private List<String> NotificationToManager = new ArrayList<>();
 
     public void scheduledDeliveries(Order order)
     {
@@ -28,14 +28,14 @@ public class NotificationService
 
     public void sendNotificationToManager(String message)
     {
-        notificationToManager.add(message);
+        NotificationToManager.add(message);
 
         System.out.println("Notification sent to manager: " + message);
     }
     public List<String> get_Notifications_to_Maneger()
     {
 
-        return notificationToManager;
+        return NotificationToManager;
     }
 
     public boolean checkAndSendNotifications()
