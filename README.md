@@ -1,4 +1,2 @@
 # Softwer
-
-
-
+yazan
