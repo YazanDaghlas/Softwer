@@ -4,8 +4,11 @@ import org.example.INPUT_TEST;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class INPUT_TESTTest {
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+public class INPUT_TESTTest {
     private INPUT_TEST inputTest;
 
     @BeforeEach
@@ -15,71 +18,109 @@ public class INPUT_TESTTest {
 
     @Test
     public void testCustomerLoginAndFetchOrderHistory() {
-        inputTest.fetchOrderHistory(); // Should not load
+        List<String> before = inputTest.fetchOrderHistory();
+        assertTrue(before == null || before.isEmpty());
+
         inputTest.loginCustomer();
-        inputTest.fetchOrderHistory(); // Should load Shawerma and Pizza
+
+        List<String> after = inputTest.fetchOrderHistory();
+        assertNotNull(after);
+        assertTrue(after.contains("Shawerma"));
+        assertTrue(after.contains("Pizza"));
     }
 
     @Test
     public void testAdminLoginAndRequestCustomerOrderData() {
-        inputTest.requestCustomerOrderData(); // Access denied
+        boolean b1 = inputTest.requestCustomerOrderData();
+        assertFalse(b1);
+
         inputTest.loginAdmin();
-        inputTest.requestCustomerOrderData(); // Access granted
+
+        boolean b2 = inputTest.requestCustomerOrderData();
+        assertTrue(b2);
     }
 
     @Test
     public void testAccessStoredOrderHistory() {
-        INPUT_TEST.accessStoredOrderHistory(); // Empty
+        List<String> a1 = INPUT_TEST.accessStoredOrderHistory();
+        assertTrue(a1 == null || a1.isEmpty());
+
         inputTest.loginCustomer();
         inputTest.fetchOrderHistory();
-        INPUT_TEST.accessStoredOrderHistory(); // Loaded
+
+        List<String> a2 = INPUT_TEST.accessStoredOrderHistory();
+        assertNotNull(a2);
+        assertEquals(2, a2.size());
     }
 
     @Test
     public void testSuggestPersonalizedMealPlan() {
-        inputTest.suggestPersonalizedMealPlan(); // Always suggests
+        String plan = inputTest.suggestPersonalizedMealPlan();
+        assertNotNull(plan);
+        assertFalse(plan.isEmpty());
     }
 
     @Test
     public void testAnalyzeTrendsAndGenerateReports() {
-        inputTest.analyzeTrendsAndGenerateReports(); // Always generates report
+        String report = inputTest.analyzeTrendsAndGenerateReports();
+        assertNotNull(report);
+        assertTrue(report.contains("Report"));
     }
 
     @Test
     public void testNavigateToCustomerProfile() {
-        inputTest.navigateToCustomerProfile(); // Access denied
+        boolean b1 = inputTest.navigateToCustomerProfile();
+        assertFalse(b1);
+
         inputTest.loginChef();
-        inputTest.navigateToCustomerProfile(); // Access granted
+
+        boolean b2 = inputTest.navigateToCustomerProfile();
+        assertTrue(b2);
     }
 
     @Test
     public void testSelectMealToReorder() {
-        inputTest.selectMealToReorder(); // No orders
+        String m1 = inputTest.selectMealToReorder();
+        assertTrue(m1 == null || m1.isEmpty());
+
         inputTest.loginCustomer();
         inputTest.fetchOrderHistory();
-        inputTest.selectMealToReorder(); // Shawerma
+
+        String m2 = inputTest.selectMealToReorder();
+        assertNotNull(m2);
+        assertEquals("Shawerma", m2);
     }
 
     @Test
     public void testNavigateToPageAsCustomer() {
-        inputTest.navigateToPage("Order History"); // Failed
+        boolean b1 = inputTest.navigateToPage("Order History");
+        assertFalse(b1);
+
         inputTest.loginCustomer();
-        inputTest.navigateToPage("Order History"); // Success
+
+        boolean b2 = inputTest.navigateToPage("Order History");
+        assertTrue(b2);
     }
 
     @Test
     public void testNavigateToPageAsAdmin() {
-        inputTest.navigateToPage("Admin Dashboard"); // Failed
+        boolean b1 = inputTest.navigateToPage("Admin Dashboard");
+        assertFalse(b1);
+
         inputTest.loginAdmin();
-        inputTest.navigateToPage("Admin Dashboard"); // Success
+
+        boolean b2 = inputTest.navigateToPage("Admin Dashboard");
+        assertTrue(b2);
     }
 
     @Test
     public void testNavigateToPageAsChef() {
-        inputTest.navigateToPage("Chef Dashboard"); // Failed
+        boolean b1 = inputTest.navigateToPage("Chef Dashboard");
+        assertFalse(b1);
+
         inputTest.loginChef();
-        inputTest.navigateToPage("Chef Dashboard"); // Success
+
+        boolean b2 = inputTest.navigateToPage("Chef Dashboard");
+        assertTrue(b2);
     }
-
-
 }
