@@ -1,71 +1,85 @@
-package YazanSystem; 
+package YazanSystem;
+
 import org.example.INPUT_TEST;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 public class INPUT_TESTTest {
+
     private INPUT_TEST inputTest;
+
     @BeforeEach
     public void setUp() {
         inputTest = new INPUT_TEST();
     }
+
     @Test
     public void testCustomerLoginAndFetchOrderHistory() {
-        inputTest.fetchOrderHistory(); // Should not load
+        inputTest.fetchOrderHistory();
         inputTest.loginCustomer();
-        inputTest.fetchOrderHistory(); // Should load Shawerma and Pizza
+        inputTest.fetchOrderHistory();
     }
+
     @Test
     public void testAdminLoginAndRequestCustomerOrderData() {
-        inputTest.requestCustomerOrderData(); // Access denied
+        inputTest.requestCustomerOrderData();
         inputTest.loginAdmin();
-        inputTest.requestCustomerOrderData(); // Access granted
+        inputTest.requestCustomerOrderData();
     }
+
     @Test
     public void testAccessStoredOrderHistory() {
-        INPUT_TEST.accessStoredOrderHistory(); // Empty
+        INPUT_TEST.accessStoredOrderHistory();
         inputTest.loginCustomer();
         inputTest.fetchOrderHistory();
-        INPUT_TEST.accessStoredOrderHistory(); // Loaded
+        INPUT_TEST.accessStoredOrderHistory();
     }
+
     @Test
     public void testSuggestPersonalizedMealPlan() {
-        inputTest.suggestPersonalizedMealPlan(); // Always suggests
+        inputTest.suggestPersonalizedMealPlan();
     }
+
     @Test
     public void testAnalyzeTrendsAndGenerateReports() {
-        inputTest.analyzeTrendsAndGenerateReports(); // Always generates report
+        inputTest.analyzeTrendsAndGenerateReports();
     }
+
     @Test
     public void testNavigateToCustomerProfile() {
-        inputTest.navigateToCustomerProfile(); // Access denied
+        inputTest.navigateToCustomerProfile();
         inputTest.loginChef();
-        inputTest.navigateToCustomerProfile(); // Access granted
+        inputTest.navigateToCustomerProfile();
     }
+
     @Test
     public void testSelectMealToReorder() {
-        inputTest.selectMealToReorder(); // No orders
+        inputTest.selectMealToReorder();
         inputTest.loginCustomer();
         inputTest.fetchOrderHistory();
-        inputTest.selectMealToReorder(); // Shawerma
+        inputTest.selectMealToReorder();
     }
+
     @Test
     public void testNavigateToPageAsCustomer() {
-        inputTest.navigateToPage("Order History"); // Failed
+        inputTest.navigateToPage("Order History");
         inputTest.loginCustomer();
-        inputTest.navigateToPage("Order History"); // Success
+        inputTest.navigateToPage("Order History");
     }
+
     @Test
     public void testNavigateToPageAsAdmin() {
-
-
-        inputTest.navigateToPage("Admin Dashboard"); // Failed
+        inputTest.navigateToPage("Admin Dashboard");
         inputTest.loginAdmin();
-        inputTest.navigateToPage("Admin Dashboard"); // Success
+        inputTest.navigateToPage("Admin Dashboard");
     }
+
     @Test
     public void testNavigateToPageAsChef() {
-        inputTest.navigateToPage("Chef Dashboard"); // Failed
+        inputTest.navigateToPage("Chef Dashboard");
         inputTest.loginChef();
-        inputTest.navigateToPage("Chef Dashboard"); // Success
+        inputTest.navigateToPage("Chef Dashboard");
     }
+
+
 }
