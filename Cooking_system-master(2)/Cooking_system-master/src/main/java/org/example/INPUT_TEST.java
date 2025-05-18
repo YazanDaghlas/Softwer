@@ -122,26 +122,22 @@ public class INPUT_TEST
             System.out.println("Access denied: Only chefs can view customer profiles");
         }
     }
-    public void selectMealToReorder() {
-        if (orderHistory != null && !orderHistory.isEmpty())
+   public void selectMealToReorder() {
+    if (orderHistory != null && !orderHistory.isEmpty())
+    {
+        selectedMeal = orderHistory.get(0);
 
+        if (selectedMeal != null)
         {
-            selectedMeal = orderHistory.getFirst();
-
-            if (selectedMeal != null)
-
-            {
-                System.out.println("Meal selected for reorder: " + selectedMeal);
-            } else {
-                System.out.println("Selected meal should not be null");
-            }
-        }
-
-
-        else {
-            System.out.println("No orders available to select ");
+            System.out.println("Meal selected for reorder: " + selectedMeal);
+        } else {
+            System.out.println("Selected meal should not be null");
         }
     }
+    else {
+        System.out.println("No orders available to select ");
+    }
+}
 
 
     public void navigateToPage(String page)
