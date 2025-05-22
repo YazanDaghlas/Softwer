@@ -22,11 +22,7 @@ public class Inventory_Manager
         this.ingredients = new ArrayList<>();  
     }
 
-    public Inventory_Manager() {
-        this.notification_Service = new NotificationService();
-        this.order_Service = new OrderService();
-        this.ingredients = new ArrayList<>();
-    }
+   
 
 
 
