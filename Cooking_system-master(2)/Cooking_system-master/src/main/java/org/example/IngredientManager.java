@@ -115,48 +115,6 @@ public class IngredientManager
         return alternativeIngredients.containsKey(unavailableIngredient);
     }
 
-    public void reviewIngredientsByChef(List<String> list) {
-        if (list == null || list.isEmpty()) {
-            System.out.println("There are no ingredients to review.");
-            return;
-        }
-
-        System.out.println("Chef is reviewing the ingredients:");
-        for (String ingredient : list) {
-            System.out.println("- " + ingredient + " ✔ Reviewed");
-        }
-
-        System.out.println("✓✓ All ingredients have been reviewed.");
-    }
-
-    public void processIngredientsBasedOnRestrictions(String restrictedIngredient, List<String> alternatives) {
-        if (restrictedIngredient == null || restrictedIngredient.isEmpty()) {
-            System.out.println("⚠ No specific ingredient provided for checking.");
-            return;
-        }
-
-        System.out.println("Ingredient \"" + restrictedIngredient + "\" is not allowed due to dietary restrictions.");
-
-        if (alternatives == null || alternatives.isEmpty()) {
-            System.out.println(" No alternatives are currently available.");
-            return;
-        }
-
-        System.out.println(" Suggested alternatives:");
-        for (String alt : alternatives) {
-            System.out.println("- " + alt);
-        }
-    }
-
-    private List<String> suggestions = new ArrayList<>();
-
-    public void sendSuggestions(String suggestion) {
-        if (suggestion != null && !suggestion.trim().isEmpty()) {
-            suggestions.add(suggestion);
-            System.out.println("Thank you for your suggestion: \"" + suggestion + "\"");
-        } else {
-            System.out.println("Suggestion cannot be empty.");
-        }
-    }
+   
 
 }
