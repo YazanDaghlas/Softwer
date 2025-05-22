@@ -164,22 +164,6 @@ public class INPUT_TEST
     }
 
 
-    public void login(String username, String number) {
-        if (number.matches("\\d{10}")) {
-            System.out.println("Welcome " + username + "! Successfully logged in with number: " + number);
-        } else {
-            System.out.println("Login failed. Please enter a valid 10-digit number.");
-        }
-    }
-
-    public void sendSuggestions(String suggestion) {
-        if (suggestion == null || suggestion.trim().isEmpty()) {
-            System.out.println("⚠ No suggestion submitted. Please enter a valid suggestion.");
-            return;
-        }
-
-        System.out.println(" Your suggestion has been received: \"" + suggestion + "\"");
-        System.out.println("It will be reviewed by the management. Thank you for your contribution!");
-    }
+  
 
 }
