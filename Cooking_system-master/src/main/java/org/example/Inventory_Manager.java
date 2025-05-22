@@ -123,7 +123,7 @@ public class Inventory_Manager
         }
 
         if (!found) {
-            System.out.println("The ingredient " + ingredientName + " is not found in the inventory.");
+            System.out.println("The ingredientS " + ingredientName + " is not found in the inventory.");
         }
     }
 
