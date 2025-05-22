@@ -107,7 +107,6 @@ public class Inventory_Manager
         }
     }
 
-
     public void checkInventory(String ingredientName, int quantityThreshold) {
         boolean found = false;
 
@@ -115,17 +114,18 @@ public class Inventory_Manager
             if (ingredient.getName().equalsIgnoreCase(ingredientName)) {
                 found = true;
                 if (ingredient.getQuantity() <= quantityThreshold) {
-                    System.out.println("تنبيه: الكمية الحالية من " + ingredientName + " (" + ingredient.getQuantity() + ") أقل أو تساوي الحد المطلوب (" + quantityThreshold + ").");
+                    System.out.println("Alert: The current quantity of " + ingredientName + " (" + ingredient.getQuantity() + ") is less than or equal to the required threshold (" + quantityThreshold + ").");
                 } else {
-                    System.out.println("الكمية من " + ingredientName + " كافية (" + ingredient.getQuantity() + ").");
+                    System.out.println("The quantity of " + ingredientName + " is sufficient (" + ingredient.getQuantity() + ").");
                 }
                 break;
             }
         }
 
         if (!found) {
-            System.out.println("المكون " + ingredientName + " غير موجود في المخزون.");
+            System.out.println("The ingredient " + ingredientName + " is not found in the inventory.");
         }
     }
+
 
 }

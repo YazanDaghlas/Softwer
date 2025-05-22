@@ -69,26 +69,26 @@ public class NotificationService
 
     public void sendDeliveryNotification(String username, String customMeal) {
         if (username == null || username.trim().isEmpty()) {
-            System.out.println("⚠ اسم المستخدم غير صالح.");
+            System.out.println(" Invalid username.");
             return;
         }
 
         if (customMeal == null || customMeal.trim().isEmpty()) {
-            System.out.println("⚠ اسم الوجبة غير صالح.");
+            System.out.println(" Invalid meal name.");
             return;
         }
 
-        String message = "🚚 عزيزي " + username + "، تم توصيل طلبك: \"" + customMeal + "\" بنجاح. شكراً لاستخدامك خدمتنا!";
+        String message = " Dear " + username + ", your order \"" + customMeal + "\" has been successfully delivered. Thank you for using our service!";
         System.out.println(message);
     }
 
     public void sendLowStockNotification(String ingredientName) {
         if (ingredientName == null || ingredientName.trim().isEmpty()) {
-            System.out.println("⚠ اسم المكون غير صالح.");
+            System.out.println("Invalid ingredient name.");
             return;
         }
 
-        String message = "⚠ تنبيه: المخزون منخفض للمكون \"" + ingredientName + "\". يرجى إعادة الطلب.";
+        String message = "Warning: Low stock for ingredient \"" + ingredientName + "\". Please restock.";
         System.out.println(message);
     }
 

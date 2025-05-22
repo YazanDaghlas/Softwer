@@ -117,32 +117,32 @@ public class IngredientManager
 
     public void reviewIngredientsByChef(List<String> list) {
         if (list == null || list.isEmpty()) {
-            System.out.println("لا توجد مكونات للمراجعة.");
+            System.out.println("There are no ingredients to review.");
             return;
         }
 
-        System.out.println("مراجعة المكونات من قبل الشيف:");
+        System.out.println("Chef is reviewing the ingredients:");
         for (String ingredient : list) {
-            System.out.println("- " + ingredient + " ✔ تمت مراجعته");
+            System.out.println("- " + ingredient + " ✔ Reviewed");
         }
 
-        System.out.println("✓✓ تم الانتهاء من مراجعة جميع المكونات.");
+        System.out.println("✓✓ All ingredients have been reviewed.");
     }
 
     public void processIngredientsBasedOnRestrictions(String restrictedIngredient, List<String> alternatives) {
         if (restrictedIngredient == null || restrictedIngredient.isEmpty()) {
-            System.out.println("⚠ لا يوجد مكون محدد للفحص.");
+            System.out.println("⚠ No specific ingredient provided for checking.");
             return;
         }
 
-        System.out.println("🚫 المكون \"" + restrictedIngredient + "\" غير مسموح بسبب القيود الغذائية.");
+        System.out.println("Ingredient \"" + restrictedIngredient + "\" is not allowed due to dietary restrictions.");
 
         if (alternatives == null || alternatives.isEmpty()) {
-            System.out.println("❌ لا توجد بدائل متاحة حالياً.");
+            System.out.println(" No alternatives are currently available.");
             return;
         }
 
-        System.out.println("✅ البدائل المقترحة:");
+        System.out.println(" Suggested alternatives:");
         for (String alt : alternatives) {
             System.out.println("- " + alt);
         }
